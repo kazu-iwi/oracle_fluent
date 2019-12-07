@@ -1,0 +1,22 @@
+From centos:centos7
+
+#set ruby version to be installed
+ENV ruby_ver="2.7.0-preview3"
+
+
+RUN yum -y update &&\
+yum -y install epel-release &&\
+yum -y install git make autoconf curl wget &&\
+yum -y install gcc-c++ glibc-headers openssl-devel readline libyaml-devl readline-devel &&\
+yum clean all
+
+yum install bzip2
+
+git clone https://github.com/rbenv/rbenv.git /usr/local/rbenv
+git clone https://github.com/rbenv/ruby-build.git /usr/local/rbenv/plugins/ruby-build
+rbenv install 2.6.5
+rbenv global 2.6.5
+rbenv rehash
+gem install bundler --no-doc
+gem install net-ssh
+gem install net-ssh
